@@ -36,29 +36,29 @@
 
 </p>
 
-<h2 align="center">Getting started</h2>
+<h2 align="center">Getting Started</h2>
 
 1. Clone the repository
 
-    $ git clone https://github.com/adayarana/adayarana.git
+    ### `git clone https://github.com/adayarana/adayarana.git`
 
 2. Install dependencies
 
-    $ npm install
+    ### `npm install`
 
 3. Set environment variables
 
 4. Run backend
 
-    $ cd backend
-    $ npm run dev
+    ### `cd backend`
+    ### `npm run dev`
 
 5. Run frontend
 
-    $ cd frontend
-    $ npm start
+    ### `cd frontend`
+    ### `npm start`
 
 6. Run test
 
-    $ npm run test (backend)
-    $ npm test (frontend)
+    ### `npm run test` (backend)
+    ### `npm test` (frontend)
