@@ -40,22 +40,25 @@
 
 1. Clone the repository
 
-$ git clone https://github.com/adayarana/adayarana.git
+    $ git clone https://github.com/adayarana/adayarana.git
 
 2. Install dependencies
 
-$ npm install
+    $ npm install
 
 3. Set environment variables
 
 4. Run backend
 
-$ npm run dev
+    $ cd backend
+    $ npm run dev
 
 5. Run frontend
 
-$ npm start
+    $ cd frontend
+    $ npm start
 
 6. Run test
 
-$ npm test
+    $ npm run test (backend)
+    $ npm test (frontend)
