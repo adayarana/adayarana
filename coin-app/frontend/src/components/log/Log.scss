@@ -1,0 +1,45 @@
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+
+    .login-container__form {
+
+        > label > input {
+            padding: 1rem;
+            width: 180px;
+        }
+
+        > label > p {
+            padding: 0.2rem,
+        }
+
+        > label > button {
+            margin: 0.5rem,
+        }
+
+        .error-message {
+            color: rgb(204,40,40);
+            font-style: italic;
+        }
+    }
+
+    > small > .login-container__link {
+        color: rgb(178,150,0);
+        font-weight: bold;
+        padding: 0.5rem;
+    }
+}
+
+@media screen and (min-width: 415px) {
+
+    .login-container {
+
+        > h3 {
+            display: none;
+        }
+
+    }
+}
