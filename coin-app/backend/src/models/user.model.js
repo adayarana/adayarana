@@ -1,4 +1,5 @@
 const { model, Schema } = require('mongoose');
+const Transactions = require('./transaction.model');
 
 const userSchema = Schema({
   email: {
@@ -8,11 +9,15 @@ const userSchema = Schema({
   password: {
     type: String,
     required: true
+  },
+  transactions: [{
+    type: Object,
+    ref: [Transactions]
+  }],
+  favCoins: {
+    type: [String],
+    required: false
   }
-  // favCoins: {
-  //   type: [String],
-  //   required: false
-  // }
 });
 
 userSchema.methods.isValidPassword = function isValidPassword(password) {
