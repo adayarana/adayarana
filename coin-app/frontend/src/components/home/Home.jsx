@@ -14,7 +14,6 @@ function Home() {
       <div className="home-container" data-testid="home-container">
         <h3 className="home-container__title">Cryptocurrencies</h3>
         <hr />
-
         <table className="home-container__table" data-testid="home-container__table">
           <thead>
             <tr>
@@ -29,7 +28,6 @@ function Home() {
           <tbody>
             {
           coins.map((coin) => ((
-
             <tr className="table__data" key={coin[0]}>
               <td><em className="far fa-star" /></td>
               <td className="data__coin">
