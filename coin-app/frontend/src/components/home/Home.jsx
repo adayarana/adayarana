@@ -16,7 +16,7 @@ function Home() {
         <hr />
 
         <table className="home-container__table" data-testid="home-container__table">
-          <tbody>
+          <thead>
             <tr>
               <th>#</th>
               <th className="data__coin">Coin:</th>
@@ -25,6 +25,8 @@ function Home() {
               <th className="data__volume">24h Volume:</th>
               <th className="data__change">24h Change:</th>
             </tr>
+          </thead>
+          <tbody>
             {
           coins.map((coin) => ((
 

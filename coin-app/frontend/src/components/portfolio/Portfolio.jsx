@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getAllTransactions,
-  createTransaction,
-  deleteTransaction,
-  updateTransaction
+  /* createTransaction, */
+  /* updateTransaction */
+  deleteTransaction
 } from '../../redux/actions/action.creators';
 import './Portfolio.scss';
+import CreatePortfolio from '../createPortfolio/createPortfolio';
 
 function Portfolio() {
   const dispatch = useDispatch();
@@ -16,221 +16,59 @@ function Portfolio() {
   const transaction = useSelector((store) => store.transaction);
   const token = useSelector((store) => store.token);
 
-  const [values, setValues] = useState({
-    type: '',
-    coin: '',
-    price: '',
-    quantity: '',
-    spent: ''
-  });
-
-  const handleChanges = (event) => {
-    const { name, value } = event.target;
-    setValues({ ...values, [name]: value });
-    console.log(values);
-  };
-
-  const initialFormState = {
-    type: '',
-    coin: '',
-    price: '',
-    quantity: '',
-    spent: ''
-  };
-
-  const {
-    register,
-    reset,
-    handleSubmit,
-    formState
-  } = useForm(initialFormState);
-
-  const onSubmit = (data, event) => {
-    event.preventDefault();
-    const newTransaction = {
-      ...data
-    };
-    dispatch(createTransaction(newTransaction));
-  };
-
   useEffect(() => {
     if (token?.token) {
       dispatch(getAllTransactions(token));
     }
   }, [transaction]);
 
-  useEffect(() => {
-    if (formState.isSubmitSuccessful) {
-      reset(initialFormState);
-    }
-  }, [formState, reset]);
-
   return (
     token.token ? (
       <div className="portfolio-container">
-        <div className="portfolio-container__form">
-          <h3 className="form__title">New Transaction</h3>
-          <hr />
-          <form className="form__group" onSubmit={handleSubmit(onSubmit)}>
-            <label htmlFor="type">
-              <p>Type:</p>
-              <select
-                id="type"
-                name="type"
-                placeholder="Type"
-                autoComplete="off"
-                {...register('type', {
-                  required: 'Type is required'
-                })}
-                type="text"
-                value={values.type}
-                onChange={handleChanges}
-              >
-                <option value="">Select...</option>
-                <option value="buy">Buy</option>
-                <option value="sell">Sell</option>
-              </select>
-              <p className="error-message">
-                {formState.errors?.type?.message}
-              </p>
-            </label>
-            <label htmlFor="coin">
-              <p>Coin:</p>
-              <input
-                id="coin"
-                data-testid="coin"
-                name="coin"
-                placeholder="Coin"
-                autoComplete="off"
-                {...register('coin', {
-                  required: 'Coin is required'
-                })}
-                type="text"
-                value={values.coin}
-                onChange={handleChanges}
-              />
-              <p className="error-message">
-                {formState.errors?.coin?.message}
-              </p>
-            </label>
-            <label htmlFor="price">
-              <p>Price:</p>
-              <input
-                id="price"
-                data-testid="price"
-                name="price"
-                placeholder="Price"
-                autoComplete="off"
-                {...register('price', {
-                  required: { value: true, message: 'Price is required' },
-                  min: { value: 0.001, message: 'Minimun value 0.001' }
-                })}
-                type="number"
-                value={values.price}
-                onChange={handleChanges}
-              />
-              <p className="error-message">
-                {formState.errors?.price?.message}
-              </p>
-            </label>
-            <label htmlFor="quantity">
-              <p>Quantity:</p>
-              <input
-                id="quantity"
-                name="quantity"
-                placeholder="Quantity"
-                autoComplete="off"
-                {...register('quantity', {
-                  required: { value: true, message: 'Quantity is required' },
-                  min: { value: 0.001, message: 'Minimun value 0.001' }
-                })}
-                type="number"
-                value={values.quantity}
-                onChange={handleChanges}
-              />
-              <p className="error-message">
-                {formState.errors?.quantity?.message}
-              </p>
-            </label>
-            <label htmlFor="spent">
-              <p>Spent:</p>
-              <input
-                id="spent"
-                name="spent"
-                placeholder="Spent"
-                autoComplete="off"
-                {...register('spent', {
-                  required: { value: true, message: 'Spent is required' },
-                  min: { value: 0.001, message: 'Minimun value 0.001' }
-                })}
-                type="number"
-                value={values.spent}
-                onChange={handleChanges}
-              />
-              <p className="error-message">
-                {formState.errors?.spent?.message}
-              </p>
-            </label>
-            <br />
-            <button type="submit">Send</button>
-          </form>
-          <hr />
-        </div>
-        <div className="portfolio-container__items">
-          <ul className="items__list">
+        <CreatePortfolio />
+        <table className="portfolio-container__table">
+          <thead>
+            <tr>
+              <th className="data__type">Type:</th>
+              <th className="data__coin">Coin:</th>
+              <th className="data__price">Price:</th>
+              <th className="data__quantity">Quantity:</th>
+              <th className="data__spent">Spent:</th>
+            </tr>
+          </thead>
+          <tbody>
             {
             transactions.map((transactionItem) => (
-              <li
-                className="items__list-item"
-                key={transactionItem._id}
-              >
-                <p>
-                  Type:
-                  {' '}
-                  {transactionItem.type}
-                </p>
-                <p>
-                  Coin:
-                  {' '}
-                  {transactionItem.coin}
-                </p>
-                <p>
-                  Price:
-                  {' '}
-                  {transactionItem.price}
-                </p>
-                <p>
-                  Quantity:
-                  {' '}
-                  {transactionItem.quantity}
-                </p>
-                <p>
-                  Spent:
-                  {' '}
-                  {transactionItem.spent}
-                </p>
-
-                <button
-                  type="button"
-                  onClick={() => { dispatch(deleteTransaction(transactionItem._id)); }}
-                >
-                  Delete
-                </button>
-
-                <button
-                  type="submit"
-                  onClick={() => {
-                    console.log(transactionItem._id);
-                    dispatch(updateTransaction(transactionItem._id, values));
-                  }}
-                >
-                  Update
-                </button>
-              </li>
+              <tr className="table__data" key={transactionItem.id}>
+                <td className="data__type">{transactionItem.type}</td>
+                <td className="data__coin">{transactionItem.coin}</td>
+                <td className="data__price-portfolio">{transactionItem.price}</td>
+                <td className="data__quantity">{transactionItem.quantity}</td>
+                <td className="data__spent">{transactionItem.spent}</td>
+                <td>
+                  <button
+                    type="button"
+                    onClick={() => { dispatch(deleteTransaction(transactionItem._id)); }}
+                  >
+                    Delete
+                  </button>
+                </td>
+                <td>
+                  <button
+                    type="submit"
+                    onClick={() => {
+                      console.log(transactionItem._id);
+                    // dispatch(updateTransaction(transactionItem._id, values));
+                    }}
+                  >
+                    Update
+                  </button>
+                </td>
+              </tr>
             ))
-        }
-          </ul>
-        </div>
+          }
+          </tbody>
+        </table>
       </div>
     ) : (
       <Redirect to="/log" />
