@@ -5,42 +5,17 @@
     text-align: center;
     padding: 1rem;
 
-    .portfolio-container__form {
-
-        .form__group {
-
-            > label > input {
-                padding: 1rem;
-            }
-
-            > label > p {
-                padding: 0.2rem;
-            }
-         
-            .error-message {
-                color: rgb(204,40,40);
-                font-style: italic;
-            }
+    .portfolio-container__table {
+    
+        > tbody > tr, th, td  {
+            padding: 0.5rem;
         }
-    }
 
-    .portfolio-container__items {
-
-        .items__list {
-           
-            > .items__list-item {
-                padding: 1rem;
-            }
-
-            > .items__list-item > p {
-                padding: 0.2rem;
-            }
-
-            > .items__list-item > button {
-                margin: 0.5rem;
-            }
         }
-    }
+}
+
+.data__price-portfolio, .data__quantity {
+    display: none;
 }
 
 @media screen and (min-width: 415px) {
@@ -48,15 +23,9 @@
         flex-direction: row;
         justify-content: space-evenly;
         align-items: baseline;
-    
-        .portfolio-container__form {
-    
-            .form__group {
+    }
 
-                > label > input {
-                   width: 110px;
-                }
-            }
-        }
+    .data__price-portfolio, .data__quantity {
+        display: table-cell;
     }
 }
