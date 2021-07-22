@@ -1,3 +1,5 @@
+@import '../../sass/var.scss';
+
 .home-container {
      padding: 1rem;
      text-align: center;
@@ -16,7 +18,12 @@
 }
 
 .fa-star {
-    color: rgb(178,150,0);
+    color: $color-gold;
+    cursor: pointer;
+}
+
+.favourite {
+    font-weight: bold;
 }
 
 .data__coin {
@@ -31,5 +38,10 @@
 
     .data__market-cap, .data__volume, .data__change {
         display: table-cell;
+    }
+
+    .fa-star:hover {
+        transform: scale(1.25) rotate(0.5turn);
+        font-weight: bold;
     }
 }

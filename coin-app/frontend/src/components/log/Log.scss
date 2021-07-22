@@ -1,3 +1,5 @@
+@import '../../sass/var.scss';
+
 .login-container {
     display: flex;
     flex-direction: column;
@@ -21,13 +23,13 @@
         }
 
         .error-message {
-            color: rgb(204,40,40);
+            color: $color-red;
             font-style: italic;
         }
     }
 
     > small > .login-container__link {
-        color: rgb(178,150,0);
+        color: $color-gold;
         font-weight: bold;
         padding: 0.5rem;
     }

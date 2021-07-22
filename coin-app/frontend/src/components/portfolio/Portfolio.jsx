@@ -38,34 +38,40 @@ function Portfolio() {
           </thead>
           <tbody>
             {
-            transactions.map((transactionItem) => (
-              <tr className="table__data" key={transactionItem.id}>
-                <td className="data__type">{transactionItem.type}</td>
-                <td className="data__coin">{transactionItem.coin}</td>
-                <td className="data__price-portfolio">{transactionItem.price}</td>
-                <td className="data__quantity">{transactionItem.quantity}</td>
-                <td className="data__spent">{transactionItem.spent}</td>
-                <td>
-                  <button
-                    type="button"
-                    onClick={() => { dispatch(deleteTransaction(transactionItem._id)); }}
-                  >
-                    Delete
-                  </button>
-                </td>
-                <td>
-                  <button
-                    type="submit"
-                    onClick={() => {
-                      console.log(transactionItem._id);
-                    // dispatch(updateTransaction(transactionItem._id, values));
-                    }}
-                  >
-                    Update
-                  </button>
-                </td>
+            transaction._id ? (
+              transactions.map((transactionItem) => (
+                <tr className="table__data" key={transactionItem.id}>
+                  <td className="data__type">{transactionItem.type}</td>
+                  <td className="data__coin">{transactionItem.coin}</td>
+                  <td className="data__price-portfolio">{transactionItem.price}</td>
+                  <td className="data__quantity">{transactionItem.quantity}</td>
+                  <td className="data__spent">{transactionItem.spent}</td>
+                  <td>
+                    <button
+                      type="button"
+                      onClick={() => { dispatch(deleteTransaction(transactionItem._id)); }}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      type="submit"
+                      onClick={() => {
+                        console.log(transactionItem._id);
+                      // dispatch(updateTransaction(transactionItem._id, values));
+                      }}
+                    >
+                      Update
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td>No transactions yet</td>
               </tr>
-            ))
+            )
           }
           </tbody>
         </table>
