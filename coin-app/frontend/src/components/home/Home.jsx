@@ -1,14 +1,22 @@
-import React, { useEffect } from 'react';
+import React, { useEffect/* , useState */ } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getApi } from '../../redux/actions/action.creators';
 import './Home.scss';
 
 function Home() {
+  /* const [favourite, setFavourite] = useState(false); */
   const coins = useSelector((store) => Object.entries(store.coins));
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getApi());
   }, []);
+
+  function handleFavourite() {
+    // let coin = document.getElementById()
+    // coin.className = 'favourite';
+    // console.log(coin._id);
+  }
+
   return (
     <>
       <div className="home-container" data-testid="home-container">
@@ -29,7 +37,7 @@ function Home() {
             {
           coins.map((coin) => ((
             <tr className="table__data" key={coin[0]}>
-              <td><em className="far fa-star" /></td>
+              <td><em className="far fa-star" role="button" aria-hidden="true" onClick={() => handleFavourite(coin)} /></td>
               <td className="data__coin">
                 {coin[0]}
               </td>

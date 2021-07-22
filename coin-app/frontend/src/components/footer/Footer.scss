@@ -1,3 +1,5 @@
+@import '../../sass/var.scss';
+
 .footer-container {
     width: 100vw;
     bottom: 0;
@@ -44,12 +46,20 @@
             .details__info {
                 display: flex;
                 justify-content: space-around;
+                
+                > p:hover {
+                    text-decoration: underline;
+                    text-decoration-style: wavy;
+                    text-decoration-color: $color-gold;
+                    text-decoration-thickness: 0.15rem;
+                }
             }
-    
+
             .details__text {
                 display: flex;
                 justify-content: space-around;
             }
+
         }
 
         .footer-container__social-links {
