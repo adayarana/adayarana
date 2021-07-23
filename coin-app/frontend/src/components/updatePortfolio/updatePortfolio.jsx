@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import {
-  createTransaction
+  updateTransaction
 } from '../../redux/actions/action.creators';
-import './createPortfolio.scss';
+import './updatePortfolio.scss';
 
-function createPortfolio() {
+function updatePortfolio() {
   const dispatch = useDispatch();
 
   const {
@@ -21,7 +21,7 @@ function createPortfolio() {
     const newTransaction = {
       ...data
     };
-    dispatch(createTransaction(newTransaction));
+    dispatch(updateTransaction(newTransaction));
   };
 
   useEffect(() => {
@@ -31,7 +31,7 @@ function createPortfolio() {
   }, [formState, reset]);
   return (
     <div className="portfolio-container__form">
-      <h3 className="form__title">New Transaction</h3>
+      <h3 className="form__title">Update Transaction</h3>
       <hr />
       <form className="form__group" onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="type">
@@ -124,11 +124,11 @@ function createPortfolio() {
           </p>
         </label>
         <br />
-        <button type="submit">Add</button>
+        <button type="submit">Update</button>
       </form>
       <hr />
     </div>
   );
 }
 
-export default createPortfolio;
+export default updatePortfolio;

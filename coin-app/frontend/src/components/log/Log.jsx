@@ -9,21 +9,16 @@ function Login() {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
 
-  const initialFormState = {
-    email: '',
-    password: ''
-  };
-
   const {
     register,
     reset,
     handleSubmit,
     formState
-  } = useForm(initialFormState);
+  } = useForm();
 
   useEffect(() => {
     if (formState.isSubmitSuccessful) {
-      reset(initialFormState);
+      reset();
     } else if (user?.token) {
       dispatch(getUserToken(user.token));
     }
