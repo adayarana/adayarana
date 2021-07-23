@@ -9,21 +9,16 @@ function Signup() {
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
 
-  const initialFormState = {
-    email: '',
-    password: ''
-  };
-
   const {
     register,
     reset,
     handleSubmit,
     formState
-  } = useForm(initialFormState);
+  } = useForm();
 
   useEffect(() => {
     if (formState.isSubmitSuccessful) {
-      reset(initialFormState);
+      reset();
     } else if (user?.user) {
       dispatch(login(user.user));
     } else if (user?.token) {
@@ -87,7 +82,7 @@ function Signup() {
         </small>
       </div>
     ) : (
-      <Redirect to="/" />
+      <Redirect to="/portfolio" />
     )
   );
 }
