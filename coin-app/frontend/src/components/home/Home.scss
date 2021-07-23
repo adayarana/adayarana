@@ -41,7 +41,8 @@
     }
 
     .fa-star:hover {
-        transform: scale(1.25) rotate(0.5turn);
+        transform: scale(1.3) rotate(0.5turn);
+        transition: 1s;
         font-weight: bold;
     }
 }

@@ -1,20 +1,29 @@
-import React, { useEffect/* , useState */ } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getApi } from '../../redux/actions/action.creators';
 import './Home.scss';
 
 function Home() {
-  /* const [favourite, setFavourite] = useState(false); */
   const coins = useSelector((store) => Object.entries(store.coins));
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getApi());
   }, []);
 
-  function handleFavourite() {
-    // let coin = document.getElementById()
-    // coin.className = 'favourite';
-    // console.log(coin._id);
+  function handleFavourite(coin) {
+    const favouriteCoin = document.getElementById(coin[0]);
+    switch (favouriteCoin.className) {
+      case 'far fa-star':
+        favouriteCoin.className = 'far fa-star favourite';
+        break;
+
+      case 'far fa-star favourite':
+        favouriteCoin.className = 'far fa-star';
+        break;
+
+      default:
+        favouriteCoin.className = 'far fa star';
+    }
   }
 
   return (
@@ -37,7 +46,15 @@ function Home() {
             {
           coins.map((coin) => ((
             <tr className="table__data" key={coin[0]}>
-              <td><em className="far fa-star" role="button" aria-hidden="true" onClick={() => handleFavourite(coin)} /></td>
+              <td>
+                <em
+                  className="far fa-star"
+                  role="button"
+                  aria-hidden="true"
+                  id={coin[0]}
+                  onClick={() => handleFavourite(coin)}
+                />
+              </td>
               <td className="data__coin">
                 {coin[0]}
               </td>
