@@ -17,12 +17,13 @@ function Portfolio() {
   const transaction = useSelector((store) => store.transaction);
   const token = useSelector((store) => store.token);
   const [editing, setEditing] = useState(false);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     if (token?.token) {
       dispatch(getAllTransactions(token));
     }
-  }, [transaction]);
+  }, [transaction, deleting]);
 
   return (
     token.token ? (
@@ -46,7 +47,7 @@ function Portfolio() {
           </thead>
           <tbody>
             {
-            transactions ? (
+            transactions.length > 0 ? (
               transactions.map((transactionItem) => (
                 <tr className="table__data" key={transactionItem._id}>
                   <td className="data__type">{transactionItem.type}</td>
@@ -58,6 +59,7 @@ function Portfolio() {
                     <button
                       type="button"
                       onClick={() => {
+                        setDeleting(!deleting);
                         console.log(transactionItem._id);
                         dispatch(deleteTransaction(transactionItem._id));
                       }}
