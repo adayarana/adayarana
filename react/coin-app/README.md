@@ -50,12 +50,12 @@
 
 4. Run backend
 
-    ### `cd coin-app/backend/`
+    ### `cd react/coin-app/backend/`
     ### `npm run dev`
 
 5. Run frontend
 
-    ### `cd coin-app/frontend/`
+    ### `cd react/coin-app/frontend/`
     ### `npm start`
 
 6. Run test
