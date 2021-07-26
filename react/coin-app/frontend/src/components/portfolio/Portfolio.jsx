@@ -18,7 +18,7 @@ function Portfolio() {
   const [deleting, setDeleting] = useState(false);
 
   const [currentTransaction, setCurrentTransaction] = useState({
-    _id: '',
+    id: '',
     type: '',
     coin: '',
     price: '',
@@ -56,7 +56,7 @@ function Portfolio() {
             {
             transactions.length > 0 ? (
               transactions.map((transactionItem) => (
-                <tr className="table__data" key={transactionItem._id}>
+                <tr className="table__data" key={transactionItem.id}>
                   <td className="data__type">{transactionItem.type}</td>
                   <td className="data__coin">{transactionItem.coin}</td>
                   <td className="data__price-portfolio">{transactionItem.price}</td>
@@ -67,7 +67,7 @@ function Portfolio() {
                       type="button"
                       onClick={() => {
                         setDeleting(!deleting);
-                        dispatch(deleteTransaction(transactionItem._id));
+                        dispatch(deleteTransaction(transactionItem.id));
                       }}
                     >
                       Delete
