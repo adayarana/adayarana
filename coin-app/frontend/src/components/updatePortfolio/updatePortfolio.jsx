@@ -6,27 +6,36 @@ import {
 } from '../../redux/actions/action.creators';
 import './updatePortfolio.scss';
 
-function updatePortfolio() {
+function updatePortfolio({ currentTransaction }) {
   const dispatch = useDispatch();
+  const initialFormState = {
+    type: '',
+    coin: '',
+    price: '',
+    quantity: '',
+    spent: ''
+  };
 
   const {
     register,
     reset,
     handleSubmit,
     formState
-  } = useForm();
+  } = useForm({
+    defaultValues: currentTransaction
+  });
 
   const onSubmit = (data, event) => {
     event.preventDefault();
     const newTransaction = {
       ...data
     };
-    dispatch(updateTransaction(newTransaction));
+    dispatch(updateTransaction(newTransaction._id, newTransaction));
   };
 
   useEffect(() => {
     if (formState.isSubmitSuccessful) {
-      reset();
+      reset(initialFormState);
     }
   }, [formState, reset]);
   return (

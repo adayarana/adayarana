@@ -3,8 +3,6 @@ import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getAllTransactions,
-  /* createTransaction, */
-  /* updateTransaction */
   deleteTransaction
 } from '../../redux/actions/action.creators';
 import './Portfolio.scss';
@@ -17,19 +15,29 @@ function Portfolio() {
   const transaction = useSelector((store) => store.transaction);
   const token = useSelector((store) => store.token);
   const [editing, setEditing] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+
+  const [currentTransaction, setCurrentTransaction] = useState({
+    _id: '',
+    type: '',
+    coin: '',
+    price: '',
+    quantity: '',
+    spent: ''
+  });
 
   useEffect(() => {
     if (token?.token) {
       dispatch(getAllTransactions(token));
     }
-  }, [transaction]);
+  }, [transaction, deleting]);
 
   return (
     token.token ? (
       <div className="portfolio-container">
         {
           editing ? (
-            <UpdatePortfolio />
+            <UpdatePortfolio currentTransaction={currentTransaction} />
           ) : (
             <CreatePortfolio />
           )
@@ -46,7 +54,7 @@ function Portfolio() {
           </thead>
           <tbody>
             {
-            transactions ? (
+            transactions.length > 0 ? (
               transactions.map((transactionItem) => (
                 <tr className="table__data" key={transactionItem._id}>
                   <td className="data__type">{transactionItem.type}</td>
@@ -58,7 +66,7 @@ function Portfolio() {
                     <button
                       type="button"
                       onClick={() => {
-                        console.log(transactionItem._id);
+                        setDeleting(!deleting);
                         dispatch(deleteTransaction(transactionItem._id));
                       }}
                     >
@@ -67,14 +75,20 @@ function Portfolio() {
                   </td>
                   <td>
                     <button
-                      type="submit"
+                      className="input-portfolio"
+                      type="button"
                       onClick={() => {
                         setEditing(!editing);
-                        console.log(transactionItem._id);
-                      // dispatch(updateTransaction(transactionItem._id, values));
+                        setCurrentTransaction(transactionItem);
                       }}
                     >
-                      Update
+                      {
+                        !editing ? (
+                          <data>Update</data>
+                        ) : (
+                          <data>Add</data>
+                        )
+                      }
                     </button>
                   </td>
                 </tr>
