@@ -1,0 +1,32 @@
+@import '../../sass/var.scss';
+
+.portfolio-container__form {
+
+    .form__group {
+
+        > label > input {
+            padding: 1rem;
+        }
+
+        > label > p {
+            padding: 0.2rem;
+        }
+     
+        .error-message {
+            color: $color-red;
+            font-style: italic;
+        }
+    }
+}
+
+@media screen and (min-width: 415px) {
+    .portfolio-container__form {
+    
+        .form__group {
+
+            > label > input {
+               width: 110px;
+            }
+        }
+    }
+}

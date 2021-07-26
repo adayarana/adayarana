@@ -1,0 +1,74 @@
+@import './sass/var.scss';
+
+* {
+    font-family: 'Inter', sans-serif;
+    background: $color-grey-background;
+    color: $color-black;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+  
+button {
+    all: unset;
+    border: 1.5px solid $color-grey-border;
+    cursor: pointer;
+    text-align: center;
+    background: $color-grey-background-button;
+    width: 70px;
+    height: 30px;
+    border-radius: 50em;
+    transition: background linear 1s;
+    box-shadow: 1px 2.5px $color-grey-border;
+}
+
+button:hover {
+    background: $color-grey-hover;
+  }
+
+input {
+    cursor: pointer;
+    border-radius: 50em;
+    border: 1.5px solid $color-grey-border;
+    width: 100px;
+    height: 30px;
+    outline: none;
+    text-align: center;
+    transition: background linear 1s;
+  }
+
+input:hover {
+    background: $color-grey-hover;
+  }
+
+input:focus {
+    border: 3px solid $color-grey-border;
+  }
+
+  select {
+    border: 1.5px solid $color-grey-border;
+    cursor: pointer;
+    outline: none;
+    width: 80px;
+    height: 30px;
+  }
+
+select:focus {
+    border: 3px solid $color-grey-border;
+  }
+
+ul {
+    list-style-type: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }  
+
+   hr {
+     margin: 1rem auto 1rem auto;
+   }
+
+   small {
+    padding: 0.5rem;
+   }

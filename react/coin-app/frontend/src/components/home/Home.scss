@@ -1,0 +1,48 @@
+@import '../../sass/var.scss';
+
+.home-container {
+     padding: 1rem;
+     text-align: center;
+
+     .home-container__table {
+        margin: auto;
+
+        > tbody > tr, th, td  {
+            padding: 0.5rem;
+        }
+     }
+
+    > hr { 
+        width: 75%;
+    }
+}
+
+.fa-star {
+    color: $color-gold;
+    cursor: pointer;
+}
+
+.favourite {
+    font-weight: bold;
+}
+
+.data__coin {
+    text-transform: capitalize;
+}
+
+.data__market-cap, .data__volume, .data__change {
+    display: none;
+}
+
+@media screen and (min-width: 415px) {
+
+    .data__market-cap, .data__volume, .data__change {
+        display: table-cell;
+    }
+
+    .fa-star:hover {
+        transform: scale(1.3) rotate(0.5turn);
+        transition: 1s;
+        font-weight: bold;
+    }
+}

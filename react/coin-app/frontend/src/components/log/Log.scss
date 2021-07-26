@@ -1,0 +1,47 @@
+@import '../../sass/var.scss';
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+
+    .login-container__form {
+
+        > label > input {
+            padding: 1rem;
+            width: 180px;
+        }
+
+        > label > p {
+            padding: 0.2rem,
+        }
+
+        > label > button {
+            margin: 0.5rem,
+        }
+
+        .error-message {
+            color: $color-red;
+            font-style: italic;
+        }
+    }
+
+    > small > .login-container__link {
+        color: $color-gold;
+        font-weight: bold;
+        padding: 0.5rem;
+    }
+}
+
+@media screen and (min-width: 415px) {
+
+    .login-container {
+
+        > h3 {
+            display: none;
+        }
+
+    }
+}
