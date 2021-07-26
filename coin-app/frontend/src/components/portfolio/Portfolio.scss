@@ -1,3 +1,5 @@
+@import '../../sass/var.scss';
+
 .portfolio-container {
     display: flex;
     flex-direction: column;
@@ -9,6 +11,18 @@
     
         > tbody > tr, th, td  {
             padding: 0.5rem;
+        }
+
+        .input-portfolio {
+
+            > data {
+                background: $color-grey-background-button;
+                transition: background linear 1s;
+            }
+        }
+
+        .input-portfolio:hover > data {
+            background: $color-grey-hover;
         }
         }
 }
