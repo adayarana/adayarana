@@ -19,6 +19,13 @@ export function getApi() {
   };
 }
 
+export function getFilteredCoins(newSearch) {
+  return {
+    type: actionsTypes.GET_FILTERED_COINS,
+    filteredCoins: newSearch
+  };
+}
+
 export function signup(newUser) {
   return async (dispatch) => {
     try {
