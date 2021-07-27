@@ -1,5 +1,6 @@
 export default {
   GET_API: 'GET_API',
+  GET_FILTERED_COINS: 'GET_FILTERED_COINS',
   SIGN_UP: 'SIGN_UP',
   LOG_IN: 'LOG_IN',
   LOG_OUT: 'LOG_OUT',

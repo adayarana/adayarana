@@ -5,10 +5,13 @@ import './Home.scss';
 
 function Home() {
   const coins = useSelector((store) => Object.entries(store.coins));
+  const filteredCoins = useSelector((store) => store.filteredCoins);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getApi());
   }, []);
+
+  const cripto = filteredCoins.length > 0 ? filteredCoins : coins;
 
   function handleFavourite(coin) {
     const favouriteCoin = document.getElementById(coin[0]);
@@ -44,35 +47,35 @@ function Home() {
           </thead>
           <tbody>
             {
-          coins.map((coin) => ((
-            <tr className="table__data" key={coin[0]}>
-              <td>
-                <em
-                  className="far fa-star"
-                  role="button"
-                  aria-hidden="true"
-                  id={coin[0]}
-                  onClick={() => handleFavourite(coin)}
-                />
-              </td>
-              <td className="data__coin">
-                {coin[0]}
-              </td>
-              <td className="data__price">
-                {coin[1].eur.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' })}
-              </td>
-              <td className="data__market-cap">
-                {coin[1].eur_market_cap.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' })}
-              </td>
-              <td className="data__volume">
-                {coin[1].eur_24h_vol.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' })}
-              </td>
-              <td className="data__change">
-                {`${coin[1].eur_24h_change.toFixed(2)} %`}
-              </td>
-            </tr>
-          )
-          ))
+            cripto.map((coin) => ((
+              <tr className="table__data" key={coin[0]}>
+                <td>
+                  <em
+                    className="far fa-star"
+                    role="button"
+                    aria-hidden="true"
+                    id={coin[0]}
+                    onClick={() => handleFavourite(coin)}
+                  />
+                </td>
+                <td className="data__coin">
+                  {coin[0]}
+                </td>
+                <td className="data__price">
+                  {coin[1].eur.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' })}
+                </td>
+                <td className="data__market-cap">
+                  {coin[1].eur_market_cap.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' })}
+                </td>
+                <td className="data__volume">
+                  {coin[1].eur_24h_vol.toLocaleString('de-DE', { style: 'currency', currency: 'EUR' })}
+                </td>
+                <td className="data__change">
+                  {`${coin[1].eur_24h_change.toFixed(2)} %`}
+                </td>
+              </tr>
+            )
+            ))
       }
           </tbody>
         </table>

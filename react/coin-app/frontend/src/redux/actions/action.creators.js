@@ -19,6 +19,13 @@ export function getApi() {
   };
 }
 
+export function getFilteredCoins(newSearch) {
+  return {
+    type: actionsTypes.GET_FILTERED_COINS,
+    filteredCoins: newSearch
+  };
+}
+
 export function signup(newUser) {
   return async (dispatch) => {
     try {
@@ -131,10 +138,10 @@ export function createTransaction(newTransaction) {
   };
 }
 
-export function getTransactionById(_id) {
+export function getTransactionById(id) {
   return async (dispatch) => {
     try {
-      const { data } = await axios.get(`${process.env.REACT_APP_DDBB_PORTFOLIO_URL}/${_id}`);
+      const { data } = await axios.get(`${process.env.REACT_APP_DDBB_PORTFOLIO_URL}/${id}`);
       dispatch({
         type: actionsTypes.GET_TRANSACTION_BY_ID,
         transaction: data
@@ -149,10 +156,10 @@ export function getTransactionById(_id) {
   };
 }
 
-export function updateTransaction(_id, newTransaction) {
+export function updateTransaction(id, newTransaction) {
   return async (dispatch) => {
     try {
-      const { data } = await axios.put(`${process.env.REACT_APP_DDBB_PORTFOLIO_URL}/${_id}`, newTransaction);
+      const { data } = await axios.put(`${process.env.REACT_APP_DDBB_PORTFOLIO_URL}/${id}`, newTransaction);
       dispatch({
         type: actionsTypes.UPDATE_TRANSACTION,
         transaction: data
@@ -167,13 +174,13 @@ export function updateTransaction(_id, newTransaction) {
   };
 }
 
-export function deleteTransaction(_id) {
+export function deleteTransaction(id) {
   return async (dispatch) => {
     try {
-      await axios.delete(`${process.env.REACT_APP_DDBB_PORTFOLIO_URL}/${_id}`);
+      await axios.delete(`${process.env.REACT_APP_DDBB_PORTFOLIO_URL}/${id}`);
       dispatch({
         type: actionsTypes.DELETE_TRANSACTION,
-        _id
+        id
       });
     } catch (error) {
       dispatch({

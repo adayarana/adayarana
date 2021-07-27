@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Header.scss';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getFilteredCoins } from '../../redux/actions/action.creators';
 
 function Header() {
+  const dispatch = useDispatch();
   const [enabled, setEnabled] = useState(false);
   const [search, setSearch] = useState('');
   const coins = useSelector((store) => Object.entries(store.coins));
   const user = useSelector((store) => store.user);
 
-  function handleFilter(event) {
-    event.preventDefault();
-    setSearch(event.target.value);
-    const text = event.target.value;
-    const newSearchEqual = coins.filter((coin) => coin[0] === text);
-    const newSearch = coins.filter((coin) => coin[0].includes(search));
-    console.log(newSearchEqual);
-    console.log(newSearch);
-  }
+  const onChange = ({ target }) => setSearch(target.value);
+
+  const newSearch = coins.filter((coin) => coin[0].includes(search));
+
+  useEffect(() => {
+    dispatch(getFilteredCoins(newSearch));
+  }, [search]);
 
   return (
     <header className="header-container">
@@ -65,7 +65,7 @@ function Header() {
                 type="search"
                 placeholder="Search"
                 value={search}
-                onChange={(event) => handleFilter(event)}
+                onChange={onChange}
               />
             </form>
           </li>

@@ -12,7 +12,7 @@ export default function transactionsReducer(transaction = [], action) {
       return action.transaction;
 
     case actionsTypes.DELETE_TRANSACTION:
-      return action._id;
+      return action.id;
 
     default:
       return transaction;

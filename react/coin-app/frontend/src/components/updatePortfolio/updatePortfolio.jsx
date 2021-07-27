@@ -30,7 +30,7 @@ function updatePortfolio({ currentTransaction }) {
     const newTransaction = {
       ...data
     };
-    dispatch(updateTransaction(newTransaction._id, newTransaction));
+    dispatch(updateTransaction(newTransaction.id, newTransaction));
   };
 
   useEffect(() => {
