@@ -191,3 +191,21 @@ export function deleteTransaction(id) {
     }
   };
 }
+
+export function deleteAllTransactions() {
+  return async (dispatch) => {
+    try {
+      await axios.delete(process.env.REACT_APP_DDBB_PORTFOLIO_URL);
+      dispatch({
+        type: actionsTypes.DELETE_ALL_TRANSACTIONS,
+        transaction: []
+      });
+    } catch (error) {
+      dispatch({
+        type: actionsTypes.DELETE_ALL_TRANSACTIONS,
+        transaction: []
+      });
+      Promise.reject(error);
+    }
+  };
+}

@@ -3,7 +3,8 @@ import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   getAllTransactions,
-  deleteTransaction
+  deleteTransaction,
+  deleteAllTransactions
 } from '../../redux/actions/action.creators';
 import './Portfolio.scss';
 import CreatePortfolio from '../createPortfolio/createPortfolio';
@@ -47,7 +48,7 @@ function Portfolio() {
             <tr>
               <th className="data__type">Type:</th>
               <th className="data__coin">Coin:</th>
-              <th className="data__price">Price:</th>
+              <th className="data__price-portfolio">Price:</th>
               <th className="data__quantity">Quantity:</th>
               <th className="data__spent">Spent:</th>
             </tr>
@@ -93,12 +94,36 @@ function Portfolio() {
                   </td>
                 </tr>
               ))
+
             ) : (
               <tr>
                 <td>No transactions yet</td>
               </tr>
             )
           }
+            {
+          transactions.length > 0 ? (
+            <tr className="table__data">
+              <td className="data__type" />
+              <td className="data__coin" />
+              <td className="data__price-portfolio" />
+              <td className="data__quantity" />
+              <td className="data__spent" />
+              <td>
+                <button
+                  className="delete-all-button"
+                  type="button"
+                  onClick={() => {
+                    dispatch(deleteAllTransactions());
+                  }}
+                >
+                  Delete All
+                </button>
+              </td>
+            </tr>
+          ) : (
+            <tr />)
+        }
           </tbody>
         </table>
       </div>
