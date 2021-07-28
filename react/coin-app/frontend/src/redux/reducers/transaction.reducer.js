@@ -14,6 +14,9 @@ export default function transactionsReducer(transaction = [], action) {
     case actionsTypes.DELETE_TRANSACTION:
       return action.id;
 
+    case actionsTypes.DELETE_ALL_TRANSACTIONS:
+      return action.transaction;
+
     default:
       return transaction;
   }

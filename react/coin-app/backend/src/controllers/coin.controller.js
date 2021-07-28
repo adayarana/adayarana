@@ -75,13 +75,25 @@ function controller() {
     }
   };
 
+  const deleteAllTransactions = async (req, res) => {
+    try {
+      await Transaction.deleteMany(req.query);
+      res.status(204);
+      res.send();
+    } catch (error) {
+      res.status(500);
+      res.send(error);
+    }
+  };
+
   return {
     getApi,
     getAllTransactions,
     createTransaction,
     getById,
     updateTransaction,
-    deleteTransaction
+    deleteTransaction,
+    deleteAllTransactions
   };
 }
 

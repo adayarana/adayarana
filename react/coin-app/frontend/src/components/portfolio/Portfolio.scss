@@ -8,7 +8,7 @@
     padding: 1rem;
 
     .portfolio-container__table {
-    
+
         > tbody > tr, th, td  {
             padding: 0.5rem;
         }
@@ -24,10 +24,15 @@
         .input-portfolio:hover > data {
             background: $color-grey-hover;
         }
+        .delete-all-button {
+            color: $color-red;
+            width: 100px;
+
+        }
         }
 }
 
-.data__price-portfolio, .data__quantity {
+.data__price-portfolio, .data__type, .data__quantity, .data__spent {
     display: none;
 }
 
@@ -38,7 +43,7 @@
         align-items: baseline;
     }
 
-    .data__price-portfolio, .data__quantity {
+    .data__price-portfolio, .data__type, .data__quantity, .data__spent {
         display: table-cell;
     }
 }

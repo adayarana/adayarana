@@ -5,7 +5,8 @@ const {
   createTransaction,
   getById,
   updateTransaction,
-  deleteTransaction
+  deleteTransaction,
+  deleteAllTransactions
 } = require('../controllers/coin.controller');
 
 const routes = Router();
@@ -17,7 +18,8 @@ routes
 routes
   .route('/portfolio')
   .get(getAllTransactions)
-  .post(createTransaction);
+  .post(createTransaction)
+  .delete(deleteAllTransactions);
 
 routes
   .route('/portfolio/:id')
