@@ -102,7 +102,7 @@ function Portfolio() {
             )
           }
             {
-          transactions.length > 0 ? (
+          transactions.length > 1 ? (
             <tr className="table__data">
               <td className="data__type" />
               <td className="data__coin" />
