@@ -1,0 +1,119 @@
+@import './var.css';
+
+* {
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: var(--accent);
+    color: var(--primary);
+}
+
+.profile-card-container, .profile-card-container__box,
+.box__arrow, .hidden__cancel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-card-container {
+    height: 100vh;
+}
+
+.profile-card-container__box {
+    width: 250px;
+    height: 250px;
+    box-shadow: 0 10px 20px var(--tertiary);
+    border-radius: 23px;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-card-container__box > img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.box__details > .details__user-name {
+    margin-bottom: 5px;
+    font-size: 2rem;
+}
+
+.box__details > .details__position {
+    color: var(--secondary)
+}
+
+.box__arrow, .hidden__cancel {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    background: white;
+    bottom: 0;
+    right: 0;
+    border-radius: 23px 0;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: all .4s;
+}
+
+.box__arrow > i {
+    transform: rotate(45deg);
+}
+
+.active-arrow {
+    transform: translate(80%, 80%);
+}
+
+.box__hidden {
+    position: absolute;
+    background: var(--accent);
+    width: 100%;
+    height: 100%;
+    border-radius: 23px;
+    padding: 40px 0 0 20px;
+    transition: all .4s;
+}
+
+.inactive {
+    transform: translate(-80%, -80%) rotate(90deg);
+}
+
+.active {
+    transform: translate(0) rotate(0);
+}
+
+.box__hidden > p {
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.hidden__skills > div {
+    display: inline-block;
+    color: var(--tertiary);
+    border: 1px solid var(--tertiary);
+    padding: 5px 10px;
+    font-size: .9rem;
+    margin: 4px 4px 4px 0;
+}
+
+.hidden__icons {
+    font-size: 1.6rem;
+    margin-top: 10px;
+}
+
+.hidden__icons > i {
+    color: var(--primary);
+    cursor: pointer;
+    margin-right: 10px;
+    transition: all .4s;
+}
+
+.hidden__icons > i:hover {
+    color: var(--tertiary);
+}
+
+.fa-arrow-right, .fa-times {
+    background-color: white;
+}
