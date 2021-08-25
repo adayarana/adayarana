@@ -104,14 +104,14 @@
 }
 
 .hidden__icons > i {
-    color: var(--primary);
     cursor: pointer;
+    color: var(--primary);
     margin-right: 10px;
-    transition: all .4s;
 }
 
 .hidden__icons > i:hover {
     color: var(--tertiary);
+    transition: 0.4s;
 }
 
 .fa-arrow-right, .fa-times {
