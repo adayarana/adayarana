@@ -36,12 +36,13 @@
     border-radius: 50%;
 }
 
-.box__details > .details__user-name {
+.details__user-name {
     margin-bottom: 5px;
+    font-weight: 350;
     font-size: 2rem;
 }
 
-.box__details > .details__position {
+.details__position {
     color: var(--secondary)
 }
 
@@ -86,7 +87,7 @@
 
 .box__hidden > p {
     margin-bottom: 15px;
-    font-size: 1.2rem;
+    font-size: 2rem;
 }
 
 .hidden__skills > div {
@@ -104,14 +105,14 @@
 }
 
 .hidden__icons > i {
-    color: var(--primary);
     cursor: pointer;
+    color: var(--primary);
     margin-right: 10px;
-    transition: all .4s;
 }
 
 .hidden__icons > i:hover {
     color: var(--tertiary);
+    transition: 0.4s;
 }
 
 .fa-arrow-right, .fa-times {
