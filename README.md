@@ -1,10 +1,8 @@
 <h1 align="center">Hi 👋, I'm Aday</h1>
 <h3 align="center">Frontend Web Developer</h3>
 
-
 <h3 align="left">Top Languages:</h3>
-<a href="https://github.com/anuraghazra/github-readme-stats"><img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=adayarana&layout=compact" alt="Aday's github stats" /></a>
-
+<a href="https://github.com/anuraghazra/github-readme-stats"> <img align="center" src="https://github-readme-stats.vercel.app/api/top-langs/?username=adayarana&layout=compact" alt="Aday's github stats"/> </a>
 
 <h3 align="left">Programming Languages:</h3>
 <p align="left"> 
