@@ -2,6 +2,11 @@
 <h3 align="center">Frontend Web Developer</h3>
 
 
+<h3 align="left">Top Languages:</h3>
+<p align="left">[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=adayarana)](https://github.com/anuraghazra/github-readme-stats)
+</p>
+
+
 <h3 align="left">Programming Languages:</h3>
 <p align="left"> 
 
