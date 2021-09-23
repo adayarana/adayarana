@@ -3,7 +3,7 @@
 
 
 <h3 align="left">Top Languages:</h3>
-[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=adayarana)]
+<a href="https://github-readme-stats.vercel.app/api/top-langs/?username=adayarana"> </a>
 
 
 <h3 align="left">Programming Languages:</h3>
