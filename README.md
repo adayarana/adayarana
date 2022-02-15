@@ -1,4 +1,4 @@
-<h1 align="center">Hi 👋, I'm Aday</h1>
+<h1 align="center">Hi 👋, I'm Ada</h1>
 <h3 align="center">Full Stack Developer</h3>
 
 <h3 align="left">Top Languages:</h3>
